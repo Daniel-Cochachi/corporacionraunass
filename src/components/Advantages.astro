@@ -1,0 +1,106 @@
+---
+import Icon from './Icon.astro';
+
+const advantages = [
+    {
+        title: "Experiencia",
+        desc: "Más de 15 años liderando proyectos de metalmecánica en el sector industrial.",
+        icon: "award"
+    },
+    {
+        title: "Personal Especializado",
+        desc: "Equipo de ingenieros y técnicos altamente capacitados y certificados.",
+        icon: "users"
+    },
+    {
+        title: "Tecnología Moderna",
+        desc: "Equipamiento de última generación para acabados precisos y duraderos.",
+        icon: "microscope"
+    },
+    {
+        title: "Seguridad Industrial",
+        desc: "Cumplimos estrictamente con los protocolos de seguridad y medio ambiente.",
+        icon: "shield"
+    }
+];
+---
+
+<section class="advantages">
+    <div class="container advantages-container">
+        <div class="advantages-header">
+            <span class="tag">¿Por qué elegirnos?</span>
+            <h2>Comprometidos con su éxito</h2>
+        </div>
+
+        <div class="advantages-grid">
+            {advantages.map(adv => (
+                <div class="advantage-card">
+                    <div class="adv-icon"><Icon name={adv.icon as any} size={32} color="var(--accent)" /></div>
+                    <h3>{adv.title}</h3>
+                    <p>{adv.desc}</p>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    .advantages {
+        background: var(--primary);
+        color: var(--white);
+    }
+
+    .advantages-header {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+    .advantages-header h2 {
+        color: var(--white);
+        font-size: 2.5rem;
+    }
+
+    .tag {
+        color: var(--accent);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        display: block;
+    }
+
+    .advantages-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 3rem;
+    }
+
+    .advantage-card {
+        text-align: center;
+    }
+
+    .adv-icon {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        width: 80px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 50%;
+    }
+
+    .advantage-card h3 {
+        color: var(--white);
+        margin-bottom: 1rem;
+    }
+
+    .advantage-card p {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.95rem;
+    }
+</style>

@@ -1,0 +1,155 @@
+---
+import Icon from './Icon.astro';
+---
+
+<section id="nosotros" class="about">
+    <div class="container about-grid">
+        <div class="about-image">
+            <img src="/sobre-nosotros.webp" alt="Personal de Corporación Raunass" loading="lazy">
+            <div class="experience-badge">
+                <span class="years"></span>
+                <span class="label">Años de Sólida Experiencia</span>
+            </div>
+        </div>
+
+        <div class="about-content">
+            <span class="section-tag">Sobre Raunass</span>
+            <h2>Servicios Integrales de Metal Mecánica</h2>
+            <p class="lead">Dedicados al rubro de producción y mantenimientos industriales en todo lo referente a la metal mecánica.</p>
+            
+            <div class="about-text">
+                <p>Somos una organización comprometida con la calidad, especializada en brindar soluciones integrales de ingeniería para el sector industrial, minero y construcción.</p>
+                
+                <ul class="work-list">
+                    <li><span class="icon"><Icon name="check" size={20} color="var(--accent)" /></span> Fabricación de fajas transportadoras de minerales.</li>
+                    <li><span class="icon"><Icon name="check" size={20} color="var(--accent)" /></span> Estructuras metálicas y techos industriales.</li>
+                    <li><span class="icon"><Icon name="check" size={20} color="var(--accent)" /></span> Piezas industriales: ejes, poleas y piñones.</li>
+                </ul>
+            </div>
+
+            <div class="mision-vision">
+                <div class="mv-item">
+                    <h3>MISIÓN</h3>
+                    <p>Otorgar un servicio confiable y de calidad, ser parte activa del equipo de trabajo de nuestros clientes en el desarrollo de soluciones integrales.</p>
+                </div>
+                <div class="mv-item">
+                    <h3>VISIÓN</h3>
+                    <p>Constituirnos en una empresa líder y reconocida en el ámbito industrial, brindando seguridad y confianza a sus clientes.</p>
+                </div>
+            </div>
+
+            <a href="/nosotros" class="btn btn-outline" style="margin-top: 2rem;">Conocer más sobre nosotros</a>
+        </div>
+    </div>
+</section>
+
+<style>
+    .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+    }
+
+    .about-image {
+        position: relative;
+    }
+
+    .about-image img {
+        border-radius: var(--radius);
+        box-shadow: 20px 20px 0px var(--bg-alt);
+    }
+
+    .experience-badge {
+        position: absolute;
+        bottom: -20px;
+        right: -20px;
+        background: var(--primary);
+        color: var(--white);
+        padding: 2rem;
+        border-radius: var(--radius);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: var(--shadow);
+    }
+
+    .experience-badge .years {
+        font-size: 2.5rem;
+        font-weight: 800;
+        font-family: 'Outfit', sans-serif;
+        line-height: 1;
+        color: var(--accent);
+    }
+
+    .experience-badge .label {
+        font-size: 0.8rem;
+        text-align: center;
+        font-weight: 500;
+    }
+
+    .section-tag {
+        color: var(--accent);
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 1.5px;
+        margin-bottom: 1rem;
+        display: block;
+    }
+
+    .about-content h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .lead {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--primary);
+        margin-bottom: 1.5rem;
+    }
+
+    .work-list {
+        margin: 2rem 0;
+    }
+
+    .work-list li {
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 500;
+    }
+
+    .mision-vision {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid #e2e8f0;
+    }
+
+    .mv-item h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+        color: var(--accent);
+    }
+
+    .mv-item p {
+        font-size: 0.9rem;
+        color: var(--text-light);
+    }
+
+    @media (max-width: 992px) {
+        .about-grid {
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .about-image img {
+            box-shadow: none;
+        }
+    }
+</style>

@@ -1,0 +1,103 @@
+---
+---
+
+<section id="inicio" class="hero">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+        <span class="hero-tag">Excelencia en Ingeniería</span>
+        <h1>Soluciones en Metalmecánica e Ingeniería Industrial</h1>
+        <p>Fabricación, mantenimiento y proyectos de alta precisión para el sector minero, industrial y de construcción en todo el Perú.</p>
+        
+        <div class="hero-actions">
+            <a href="#servicios" class="btn btn-primary">Ver Servicios</a>
+            <a href="https://wa.me/51989227838?text=Hola%20Corporación%20Raunass,%20me%20gustaría%20solicitar%20una%20cotización." target="_blank" class="btn btn-outline-white">Solicitar Cotización</a>
+        </div>
+    </div>
+</section>
+
+<style>
+    .hero {
+        position: relative;
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+        background: #0f172a url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+        color: var(--white);
+        padding-top: 80px; /* Offset for sticky navbar */
+    }
+
+    .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.6));
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 10;
+        max-width: 800px;
+    }
+
+    .hero-tag {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        background: rgba(59, 130, 246, 0.2);
+        border-left: 4px solid var(--accent);
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+        margin-bottom: 2rem;
+    }
+
+    h1 {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+        color: var(--white);
+    }
+
+    p {
+        font-size: clamp(1.1rem, 2vw, 1.25rem);
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 2.5rem;
+        max-width: 600px;
+    }
+
+    .hero-actions {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .btn-outline-white {
+        background: transparent;
+        border: 2px solid var(--white);
+        color: var(--white);
+    }
+
+    .btn-outline-white:hover {
+        background: var(--white);
+        color: var(--primary);
+        transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+        .hero {
+            min-height: 70vh;
+            text-align: center;
+        }
+        
+        .hero-content {
+            margin: 0 auto;
+        }
+
+        .hero-actions {
+            justify-content: center;
+            flex-direction: column;
+        }
+    }
+</style>

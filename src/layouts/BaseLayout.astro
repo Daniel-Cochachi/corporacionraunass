@@ -1,0 +1,153 @@
+---
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "Soluciones en Metalmecánica e Ingeniería Industrial - Corporación Raunass S.A.C." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+		<meta name="generator" content={Astro.generator} />
+		<title>{title} | Corporación Raunass S.A.C.</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--primary: #0f172a;
+		--primary-light: #1e293b;
+		--secondary: #64748b;
+		--accent: #3b82f6;
+		--text: #334155;
+		--text-light: #64748b;
+		--bg: #ffffff;
+		--bg-alt: #f8fafc;
+		--white: #ffffff;
+		--radius: 0.75rem;
+		--shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+		--transition: all 0.3s ease;
+	}
+
+	* {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
+
+	html {
+		font-family: 'Inter', system-ui, sans-serif;
+		background: var(--bg);
+		color: var(--text);
+		scroll-behavior: smooth;
+	}
+
+	body {
+		min-height: 100vh;
+		line-height: 1.6;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		font-family: 'Outfit', sans-serif;
+		color: var(--primary);
+		line-height: 1.2;
+	}
+
+	a {
+		text-decoration: none;
+		color: inherit;
+		transition: var(--transition);
+	}
+
+	ul {
+		list-style: none;
+	}
+
+	img {
+		max-width: 100%;
+		height: auto;
+		display: block;
+	}
+
+	.container {
+		width: 100%;
+		max-width: 1280px;
+		margin: 0 auto;
+		padding: 0 1.5rem;
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.75rem 1.5rem;
+		border-radius: var(--radius);
+		font-weight: 600;
+		transition: var(--transition);
+		cursor: pointer;
+		border: none;
+	}
+
+	.btn-primary {
+		background: var(--primary);
+		color: var(--white);
+	}
+
+	.btn-primary:hover {
+		background: var(--primary-light);
+		transform: translateY(-2px);
+	}
+
+	.btn-outline {
+		background: transparent;
+		border: 2px solid var(--primary);
+		color: var(--primary);
+	}
+
+	.btn-outline:hover {
+		background: var(--primary);
+		color: var(--white);
+		transform: translateY(-2px);
+	}
+
+	section {
+		padding: 5rem 0;
+	}
+
+	.section-title {
+		text-align: center;
+		margin-bottom: 3rem;
+	}
+
+	.section-title h2 {
+		font-size: 2.5rem;
+		margin-bottom: 1rem;
+	}
+
+	.section-title p {
+		color: var(--text-light);
+		max-width: 600px;
+		margin: 0 auto;
+	}
+
+	@media (max-width: 768px) {
+		section {
+			padding: 3.5rem 0;
+		}
+		
+		.section-title h2 {
+			font-size: 2rem;
+		}
+	}
+</style>

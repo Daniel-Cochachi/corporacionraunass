@@ -1,0 +1,150 @@
+---
+import Icon from './Icon.astro';
+---
+
+<footer class="site-footer">
+    <div class="container footer-grid">
+        <div class="footer-info">
+            <a href="/" class="logo">
+                <img src="/metal-meanica-raunass-01.webp" alt="Corporación Raunass Logo" height="40" />
+            </a>
+            <p>Empresa líder en metalmecánica e ingeniería industrial en Perú. Brindamos seguridad, confianza y calidad en cada proyecto.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook">FB</a>
+                <a href="#" aria-label="LinkedIn">LN</a>
+                <a href="#" aria-label="Instagram">IG</a>
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <h3>Servicios</h3>
+            <ul>
+                <li><a href="/servicios/industria">Industria</a></li>
+                <li><a href="/servicios/mineria">Minería</a></li>
+                <li><a href="/servicios/edificaciones">Edificaciones</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-contact">
+            <h3>Contacto</h3>
+            <ul>
+                <li><Icon name="map" size={16} /> <strong>OFICINA:</strong> Ca. Santa Rosa Mz 09, Lt 30, Asoc. San Gregorio, Ate Vitarte, Lima</li>
+                <li><Icon name="map" size={16} /> <strong>PLANTA:</strong> MZA-G, LOTE 8, A.V. Rural y Pecuaria AGR Huancaya, Lima-Lurigancho</li>
+                <li><Icon name="phone" size={16} /> +51 989227838</li>
+                <li><Icon name="mail" size={16} /> ventas@corporacionraunass.com</li>
+                <li><Icon name="mail" size={16} /> raunass_@hotmail.com</li>
+                <li><Icon name="mail" size={16} /> elva_raunass33@hotmail.com</li>
+                <li><Icon name="clock" size={16} /> Lun - Sáb: 8:00 AM - 6:00 PM</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="container">
+            <p>&copy; {new Date().getFullYear()} Corporación Raunass S.A.C. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
+
+<style>
+    .site-footer {
+        background: var(--primary);
+        color: var(--white);
+        padding-top: 5rem;
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1.5fr;
+        gap: 4rem;
+        padding-bottom: 4rem;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .logo img {
+        height: 50px;
+        width: auto;
+        filter: brightness(0) invert(1); /* Logo blanco para el footer oscuro */
+    }
+
+    .footer-info p {
+        color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 2rem;
+        max-width: 350px;
+    }
+
+    .social-links {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .social-links a {
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-weight: 700;
+        font-size: 0.8rem;
+    }
+
+    .social-links a:hover {
+        background: var(--accent);
+    }
+
+    .site-footer h3 {
+        color: var(--white);
+        margin-bottom: 1.5rem;
+        font-size: 1.25rem;
+    }
+
+    .site-footer ul li {
+        margin-bottom: 0.75rem;
+    }
+
+    .site-footer ul li a {
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .site-footer ul li a:hover {
+        color: var(--accent);
+        padding-left: 5px;
+    }
+
+    .footer-contact li {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.95rem;
+    }
+
+    .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 2rem 0;
+        text-align: center;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.4);
+    }
+
+    @media (max-width: 992px) {
+        .footer-grid {
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .footer-info p, .logo {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .social-links {
+            justify-content: center;
+        }
+    }
+</style>

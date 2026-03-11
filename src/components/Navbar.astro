@@ -1,0 +1,293 @@
+---
+const { logo = "RAUNASS" } = Astro.props;
+---
+
+<header class="navbar">
+    <div class="container nav-content">
+        <a href="/" class="logo">
+            <img src="/metal-meanica-raunass-01.webp" alt="Corporación Raunass Logo" height="50" />
+        </a>
+
+        <nav class="nav-links">
+            <a href="/">Inicio</a>
+            <a href="/nosotros">Nosotros</a>
+            <div class="dropdown">
+                <a href="/servicios" class="dropdown-toggle">
+                    Servicios <span class="arrow">▼</span>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="/servicios/industria">Industria</a>
+                    <a href="/servicios/mineria">Minería</a>
+                    <a href="/servicios/edificaciones">Edificaciones</a>
+                </div>
+            </div>
+            <a href="/proyectos">Proyectos</a>
+            <a href="/contactenos">Contacto</a>
+            <a href="https://wa.me/51989227838?text=Hola%20Corporación%20Raunass,%20me%20gustaría%20solicitar%20una%20cotización." target="_blank" class="btn btn-primary mobile-cta">
+                Solicitar Cotización
+            </a>
+        </nav>
+
+        <a href="https://wa.me/51989227838?text=Hola%20Corporación%20Raunass,%20me%20gustaría%20solicitar%20una%20cotización." target="_blank" class="btn btn-primary nav-cta">
+            Solicitar Cotización
+        </a>
+
+        <button class="mobile-toggle" aria-label="Toggle Menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    </div>
+</header>
+
+<style>
+    .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: var(--white);
+        box-shadow: var(--shadow);
+        height: 80px;
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+
+    .logo img {
+        height: 60px;
+        width: auto;
+        object-fit: contain;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    .nav-links a {
+        font-weight: 500;
+        color: var(--text);
+        font-size: 0.95rem;
+        transition: var(--transition);
+    }
+
+    .nav-links a:hover,
+    .dropdown:hover .dropdown-toggle {
+        color: var(--accent);
+    }
+
+    /* Dropdown Desktop */
+    .dropdown {
+        position: relative;
+    }
+
+    .dropdown-toggle {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .arrow {
+        font-size: 0.7rem;
+        transition: transform 0.3s ease;
+    }
+
+    .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: var(--white);
+        min-width: 200px;
+        box-shadow: var(--shadow-lg);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        padding: 0.5rem 0;
+        border-radius: 4px;
+        border-top: 2px solid var(--accent);
+    }
+
+    .dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .dropdown:hover .arrow {
+        transform: rotate(180deg);
+    }
+
+    .dropdown-menu a {
+        display: block;
+        padding: 0.75rem 1.5rem;
+        border-bottom: none;
+        font-size: 0.9rem;
+    }
+
+    .dropdown-menu a:hover {
+        background: var(--bg-alt);
+        padding-left: 2rem;
+    }
+
+    .mobile-cta {
+        display: none;
+    }
+
+    .mobile-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        z-index: 1001;
+    }
+
+    .mobile-toggle .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background: var(--primary);
+        transition: var(--transition);
+    }
+
+    /* Mobile Toggle Animation */
+    .mobile-toggle.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .mobile-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .mobile-toggle.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    @media (max-width: 992px) {
+        .nav-cta {
+            display: none;
+        }
+
+        .mobile-toggle {
+            display: flex;
+        }
+
+        .nav-links {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            height: calc(100vh - 80px);
+            background: var(--white);
+            flex-direction: column;
+            padding: 2rem;
+            gap: 1.5rem;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+        }
+
+        .nav-links.active {
+            transform: translateX(0);
+        }
+
+        .nav-links a,
+        .dropdown-toggle {
+            font-size: 1.2rem;
+            width: 100%;
+            text-align: center;
+            padding: 1rem;
+            border-bottom: 1px solid var(--bg-alt);
+        }
+
+        .dropdown {
+            width: 100%;
+        }
+
+        .dropdown-menu {
+            position: static;
+            opacity: 1;
+            visibility: visible;
+            transform: none;
+            box-shadow: none;
+            background: var(--bg-alt);
+            width: 100%;
+            display: none; /* Se activará con JS o clase activa */
+            padding: 0;
+            border: none;
+        }
+
+        .dropdown.active .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu a {
+            padding: 1rem;
+            font-size: 1rem;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            color: var(--text-light);
+        }
+
+        .dropdown.active .arrow {
+            transform: rotate(180deg);
+        }
+
+        .mobile-cta {
+            display: block;
+            margin-top: 1rem;
+        }
+    }
+</style>
+
+<script>
+    const toggle = document.querySelector('.mobile-toggle');
+    const nav = document.querySelector('.nav-links');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    if (toggle && nav) {
+        toggle.addEventListener('click', () => {
+            toggle.classList.toggle('active');
+            nav.classList.toggle('active');
+            document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Submenu toggle for mobile
+        const dropdown = document.querySelector('.dropdown');
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+
+        if (dropdown && dropdownToggle) {
+            dropdownToggle.addEventListener('click', (e) => {
+                if (window.innerWidth <= 992) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                }
+            });
+        }
+
+        // Close menu when a link is clicked
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (!link.classList.contains('dropdown-toggle')) {
+                    toggle.classList.remove('active');
+                    nav.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+    }
+</script>

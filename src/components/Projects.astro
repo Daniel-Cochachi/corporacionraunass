@@ -1,0 +1,136 @@
+---
+const projects = [
+    {
+        title: "Estructuras Mineras",
+        category: "Minería",
+        image: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?q=80&w=2163&auto=format&fit=crop"
+    },
+    {
+        title: "Techos Parabólicos",
+        category: "Construcción",
+        image: "https://images.unsplash.com/photo-1517089531940-da4cabd91319?q=80&w=1974&auto=format&fit=crop"
+    },
+    {
+        title: "Mantenimiento de Maquinaria",
+        category: "Industria",
+        image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2070&auto=format&fit=crop"
+    },
+    {
+        title: "Naves Industriales",
+        category: "Construcción",
+        image: "https://images.unsplash.com/photo-1565008480292-1b60c2aa27d1?q=80&w=1932&auto=format&fit=crop"
+    },
+    {
+        title: "Fajas Transportadoras",
+        category: "Minería",
+        image: "https://images.unsplash.com/photo-1516937941344-00b4e0337589?q=80&w=2070&auto=format&fit=crop"
+    },
+    {
+        title: "Piezas de Precisión",
+        category: "Metalmecánica",
+        image: "https://images.unsplash.com/photo-1542281286-9e0a16bb7366?q=80&w=2070&auto=format&fit=crop"
+    }
+];
+---
+
+<section id="proyectos" class="projects">
+    <div class="container">
+        <div class="section-title">
+            <h2>Proyectos Recientes</h2>
+            <p>Una muestra de nuestra capacidad técnica y compromiso con la calidad en cada entrega.</p>
+        </div>
+
+        <div class="projects-grid">
+            {projects.map(project => (
+                <div class="project-card">
+                    <img src={project.image} alt={project.title} loading="lazy">
+                    <div class="project-overlay">
+                        <span class="category">{project.category}</span>
+                        <h3>{project.title}</h3>
+                        <a href="https://wa.me/51989227838?text=Hola%20Corporación%20Raunass,%20me%20gustaría%20consultar%20sobre%20este%20proyecto." target="_blank" class="view-btn">Consultar</a>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    .projects {
+        background: var(--white);
+    }
+
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .project-card {
+        position: relative;
+        height: 300px;
+        overflow: hidden;
+        border-radius: var(--radius);
+        cursor: pointer;
+    }
+
+    .project-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+    }
+
+    .project-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 2rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .project-card:hover img {
+        transform: scale(1.1);
+    }
+
+    .project-card:hover .project-overlay {
+        opacity: 1;
+    }
+
+    .project-overlay .category {
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--accent);
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+    }
+
+    .project-overlay h3 {
+        color: var(--white);
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+    }
+
+    .view-btn {
+        background: var(--accent);
+        color: var(--white);
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius);
+        font-size: 0.85rem;
+        font-weight: 600;
+        width: fit-content;
+    }
+
+    @media (max-width: 768px) {
+        .projects-grid {
+            grid-auto-rows: 250px;
+        }
+    }
+</style>

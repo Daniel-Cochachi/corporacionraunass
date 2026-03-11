@@ -1,0 +1,137 @@
+---
+import Icon from './Icon.astro';
+
+const services = [
+    {
+        title: "Industria",
+        description: "Fabricación y mantenimiento de piezas industriales de alta precisión como ejes, poleas y piñones.",
+        icon: "factory",
+        image: "/servicio-industria.webp",
+        link: "/servicios/industria"
+    },
+    {
+        title: "Minería",
+        description: "Desarrollo de fajas transportadoras y estructuras robustas para procesos mineros exigentes.",
+        icon: "pickaxe",
+        image: "/servicio-mineria.webp",
+        link: "/servicios/mineria"
+    },
+    {
+        title: "Edificaciones",
+        description: "Montaje de estructuras metálicas, techos industriales y edificaciones de gran envergadura.",
+        icon: "constructions",
+        image: "/servicio-edificaciones.webp",
+        link: "/servicios/edificaciones"
+    }
+];
+---
+
+<section id="servicios" class="services">
+    <div class="container">
+        <div class="section-title">
+            <h2>Nuestros Servicios</h2>
+            <p>Ofrecemos soluciones integrales en ingeniería y metalmecánica adaptadas a las necesidades específicas de cada sector.</p>
+        </div>
+
+        <div class="services-grid">
+            {services.map(service => (
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src={service.image} alt={service.title} />
+                        <div class="service-icon-overlay"><Icon name={service.icon as any} size={32} color="var(--white)" /></div>
+                    </div>
+                    <div class="service-info">
+                        <h3>{service.title}</h3>
+                        <p>{service.description}</p>
+                        <a href={service.link} class="service-link">Leer más →</a>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    .services {
+        background: var(--bg-alt);
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+    }
+
+    .service-card {
+        background: var(--white);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .service-card:hover {
+        transform: translateY(-10px);
+    }
+
+    .service-image {
+        position: relative;
+        height: 200px;
+        overflow: hidden;
+    }
+
+    .service-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+    }
+
+    .service-card:hover .service-image img {
+        transform: scale(1.1);
+    }
+
+    .service-icon-overlay {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        background: var(--accent);
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        box-shadow: var(--shadow);
+    }
+
+    .service-info {
+        padding: 2rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .service-info h3 {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+        color: var(--primary);
+    }
+
+    .service-info p {
+        color: var(--text-light);
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+        flex: 1;
+    }
+
+    .service-link {
+        font-weight: 600;
+        color: var(--accent);
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+</style>

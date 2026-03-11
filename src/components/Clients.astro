@@ -1,0 +1,182 @@
+---
+const clients = [
+    { name: "Corporación E. Wong", logo: "/clientes/corporacion-ewong.webp" },
+    { name: "Building", logo: "/clientes/building.webp" },
+    { name: "Antamina", logo: "/clientes/antamin.webp" },
+    { name: "Graña y Montero", logo: "/clientes/grana-y-montero.webp" },
+    { name: "GMI", logo: "/clientes/gmi.webp" },
+    { name: "Cosapi", logo: "/clientes/cosapi.webp" }
+];
+---
+
+<section class="clients">
+    <div class="container">
+        <div class="section-title">
+            <h2>Nuestros Clientes</h2>
+            <div class="title-underline"></div>
+        </div>
+
+        <div class="clients-slider">
+            <button class="slider-btn prev" aria-label="Anterior">&lt;</button>
+            <div class="clients-grid">
+                {clients.map(client => (
+                    <div class="client-item">
+                        <img src={client.logo} alt={client.name} title={client.name} />
+                    </div>
+                ))}
+            </div>
+            <button class="slider-btn next" aria-label="Siguiente">&gt;</button>
+        </div>
+    </div>
+</section>
+
+<style>
+    .clients {
+        padding: 5rem 0;
+        background: var(--white);
+    }
+
+    .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin-bottom: 0.5rem;
+    }
+
+    .title-underline {
+        width: 80px;
+        height: 2px;
+        background: var(--primary);
+        margin: 0 auto;
+        opacity: 0.3;
+    }
+
+    .clients-slider {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        position: relative;
+    }
+
+    .clients-grid {
+        display: flex;
+        overflow-x: auto;
+        gap: 3rem;
+        padding: 1rem;
+        scroll-behavior: smooth;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;  /* IE and Edge */
+        flex: 1;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .clients-grid::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+    }
+
+    .client-item {
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+        filter: grayscale(100%);
+        opacity: 0.7;
+    }
+
+    .client-item:hover {
+        filter: grayscale(0%);
+        opacity: 1;
+        transform: scale(1.05);
+    }
+
+    .client-item img {
+        max-height: 70px; /* Aumentado de 50px */
+        max-width: 180px; /* Aumentado de 150px */
+        object-fit: contain;
+    }
+
+    .slider-btn {
+        background: var(--bg-alt);
+        border: 1px solid #e2e8f0;
+        color: var(--primary);
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: var(--transition);
+        font-family: monospace;
+        font-size: 1.2rem;
+        z-index: 10;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .slider-btn:hover {
+        background: var(--accent);
+        color: var(--white);
+        border-color: var(--accent);
+        transform: scale(1.1);
+    }
+
+    @media (max-width: 768px) {
+        .clients-grid {
+            gap: 2rem;
+        }
+        .client-item img {
+            max-height: 50px;
+        }
+        .slider-btn {
+            display: none; /* Ocultar flechas en móvil para usar scroll táctil */
+        }
+    }
+</style>
+
+<script>
+    const grid = document.querySelector('.clients-grid');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+
+    if (grid && prevBtn && nextBtn) {
+        const scrollAmount = 300;
+
+        prevBtn.addEventListener('click', () => {
+            grid.scrollBy({
+                left: -scrollAmount,
+                behavior: 'smooth'
+            });
+        });
+
+        nextBtn.addEventListener('click', () => {
+            grid.scrollBy({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+        });
+
+        // Ocultar botones si no hay scroll
+        const checkScroll = () => {
+            if (grid.scrollWidth <= grid.clientWidth) {
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+            } else {
+                // Solo mostrar en pantallas grandes
+                if (window.innerWidth > 768) {
+                    prevBtn.style.display = 'flex';
+                    nextBtn.style.display = 'flex';
+                }
+            }
+        };
+
+        window.addEventListener('resize', checkScroll);
+        checkScroll();
+    }
+</script>
